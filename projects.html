@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects | Aryan Gupta — Full Stack Data Scientist</title>
+  <meta name="description" content="Explore all data science models, predictive pipelines, deep learning labs, and full-stack applications built by Aryan Gupta with interactive live GitHub README viewers.">
+  <meta name="keywords" content="Data Science, Machine Learning, Deep Learning, Full Stack, Python, Portfolio, Aryan Gupta, GitHub, Projects">
+  <meta name="author" content="Aryan Gupta">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ag-portfolio.vercel.app/projects.html">
+  <meta property="og:title" content="All Projects | Aryan Gupta — Full Stack Data Scientist">
+  <meta property="og:description" content="Explore all data science models, predictive pipelines, and full-stack software built by Aryan Gupta.">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="All Projects | Aryan Gupta">
+  <meta property="twitter:description" content="Interactive project directory and live GitHub README viewer.">
+
+  <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css?v=17923151">
+  
+  <!-- Highlight.js GitHub Dark Dimmed Theme for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+
+  <!-- Instant Theme Initializer (prevents theme flicker) -->
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('ag-theme') || 'dark';
+        document.documentElement.classList.add('theme-' + theme);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="min-h-screen flex flex-col pt-[72px] antialiased">
+
+  <!-- Global Ambient Background — separate GPU layer to avoid scroll repaints -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-50 fixed-gpu">
+    <div class="absolute top-[-10%] left-[-10%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-primary/10 blur-[80px] will-change-transform"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[40vw] max-w-[500px] h-[40vw] max-h-[500px] rounded-full bg-purple-500/10 blur-[80px] will-change-transform"></div>
+    <div class="absolute top-[40%] right-[20%] w-[20vw] max-w-[300px] h-[20vw] max-h-[300px] rounded-full bg-cyan-500/10 blur-[60px] will-change-transform"></div>
+  </div>
+
+  <!-- Floating Scroll-to-Top and Scroll-to-Bottom Buttons -->
+  <div class="fixed bottom-8 right-8 z-[90] flex flex-col items-center bg-card/60 backdrop-blur-lg border border-card-border shadow-xl shadow-black/10 rounded-full overflow-hidden transition-all hover:shadow-primary/20 fixed-gpu">
+    <button id="btn-scroll-top" class="p-3 text-muted hover:text-primary hover:bg-card/80 transition-all focus:outline-none relative" title="Scroll to Top" aria-label="Scroll to Top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+    </button>
+    <div class="w-[60%] h-[1px] bg-card-border/60"></div>
+    <button id="btn-scroll-bottom" class="p-3 text-muted hover:text-primary hover:bg-card/80 transition-all focus:outline-none relative" title="Scroll to Bottom" aria-label="Scroll to Bottom">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Floating AI Core Button -->
+  <div class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[100] group fixed-gpu">
+    <div class="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-all pointer-events-none whitespace-nowrap shadow-xl shadow-primary/20">
+      AI CORE — [CMD+K]
+    </div>
+    <button id="btn-open-hud" class="w-16 h-16 rounded-full flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(var(--primary-rgb),0.4)] ring-2 ring-primary/40 focus:outline-none transition-transform hover:scale-110 active:scale-95" aria-label="Open AI Neural HUD">
+      <div class="absolute inset-0 bg-primary/20 backdrop-blur-xl border border-primary/40 rounded-full group-hover:bg-primary/40 transition-colors"></div>
+      <div class="relative animate-pulse">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary group-hover:text-white transition-colors">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent animate-spin-slow"></div>
+    </button>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header>
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-background/40 backdrop-blur-xl border-b border-card-border/40 shadow-sm fixed-gpu">
+      <a href="index.html#home" class="flex items-center text-foreground drop-shadow-sm focus:outline-none">
+        <span class="text-lg md:text-xl font-extrabold tracking-tight whitespace-nowrap flex items-center">
+          ARYAN GUPTA
+          <span class="ml-3 text-2xl drop-shadow-sm hover:scale-110 transition-transform">🇮🇳</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8" id="desktop-nav">
+        <a href="index.html#home" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 hover:backdrop-blur-md">Home</a>
+        <a href="index.html#about" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 hover:backdrop-blur-md">About</a>
+        <a href="index.html#skills" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 hover:backdrop-blur-md">Skills</a>
+        <a href="index.html#experience" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 hover:backdrop-blur-md">Experience</a>
+        <a href="projects.html" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-primary bg-primary/10 border-primary/20 shadow-[0_4px_15px_rgba(var(--primary-rgb),0.2)]">Projects</a>
+        <a href="index.html#contact" class="nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-transparent text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 hover:backdrop-blur-md">Contact</a>
+      </div>
+
+      <!-- Right Controls: Theme Toggle & Online Indicator -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Pill -->
+        <div class="relative flex items-center gap-1.5 bg-white/5 dark:bg-black/30 backdrop-blur-3xl border border-white/10 p-1 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.1)] overflow-hidden h-10" id="theme-toggle">
+          <button data-theme="light" class="theme-btn relative z-10 flex items-center justify-center w-9 h-9 rounded-full text-muted hover:text-foreground transition-colors" aria-label="Switch to light theme">
+            <span class="text-xl font-bold">☀️</span>
+          </button>
+          <button data-theme="dark" class="theme-btn relative z-10 flex items-center justify-center w-9 h-9 rounded-full text-white transition-colors" aria-label="Switch to dark theme">
+            <span class="text-xl font-bold">🌑</span>
+          </button>
+          <button data-theme="reader" class="theme-btn relative z-10 flex items-center justify-center w-9 h-9 rounded-full text-muted hover:text-foreground transition-colors" aria-label="Switch to reader theme">
+            <span class="text-xl font-bold">☕</span>
+          </button>
+        </div>
+
+        <!-- Blinking Green Online Indicator -->
+        <div class="relative flex h-3 w-3 ml-1" title="Online & Available">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] border border-emerald-300/50"></span>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-muted hover:text-foreground focus:outline-none" aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-x-0 top-[72px] bg-background/95 backdrop-blur-2xl border-b border-card-border/60 p-6 z-40 transition-all">
+      <div class="flex flex-col gap-4">
+        <a href="index.html#home" class="mobile-nav-link text-base font-semibold text-muted hover:text-foreground py-2 border-b border-card-border/30">Home</a>
+        <a href="index.html#about" class="mobile-nav-link text-base font-semibold text-muted hover:text-foreground py-2 border-b border-card-border/30">About</a>
+        <a href="index.html#skills" class="mobile-nav-link text-base font-semibold text-muted hover:text-foreground py-2 border-b border-card-border/30">Skills</a>
+        <a href="index.html#experience" class="mobile-nav-link text-base font-semibold text-muted hover:text-foreground py-2 border-b border-card-border/30">Experience</a>
+        <a href="projects.html" class="mobile-nav-link text-base font-semibold text-primary py-2 border-b border-card-border/30">Projects</a>
+        <a href="index.html#contact" class="mobile-nav-link text-base font-semibold text-muted hover:text-foreground py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 py-10">
+
+    <!-- VIEW 1: PROJECTS GRID & FILTERS -->
+    <section id="projects-grid-view">
+      
+      <!-- Back to Home Link -->
+      <div class="mb-6">
+        <a href="index.html#projects" class="inline-flex items-center gap-2 text-sm font-bold text-muted hover:text-primary transition-colors group">
+          <span class="group-hover:-translate-x-1 transition-transform">←</span>
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Header Section -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">PORTFOLIO &amp; REPOSITORIES</p>
+            <span id="project-count-badge" class="px-3 py-0.5 rounded-full text-xs font-extrabold bg-primary/10 text-primary border border-primary/25">
+              8 Projects
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-3">
+            All Projects
+          </h1>
+          <div class="w-20 h-1 bg-gradient-to-r from-primary to-purple-500 rounded-full mb-4"></div>
+          <p class="text-muted text-sm md:text-base max-w-2xl leading-relaxed">
+            A comprehensive catalog of machine learning architectures, predictive systems, data analytics pipelines, and full-stack software. Click any project to inspect its live GitHub README.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/yoloaryan" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-muted hover:text-primary transition-colors flex items-center gap-1.5 group shrink-0">
+            <span>Explore all on GitHub</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Controls: Live Search + Sort + Category Filter Pills -->
+      <div class="bg-card/40 backdrop-blur-xl border border-card-border/60 rounded-3xl p-6 mb-10 shadow-lg space-y-6">
+        
+        <!-- Search and Sort Row -->
+        <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <!-- Search Box -->
+          <div class="project-search-container">
+            <svg class="project-search-icon" style="position: absolute; left: 1.125rem; top: 50%; transform: translateY(-50%); width: 1.125rem; height: 1.125rem; pointer-events: none; z-index: 5;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              id="project-search" 
+              type="text" 
+              placeholder="Search by title, tech stack (Python, React...), or topic..." 
+              class="project-search-input"
+              style="padding-left: 3rem !important; padding-right: 2.75rem !important;"
+              aria-label="Search projects"
+            />
+            <button 
+              id="btn-clear-search" 
+              class="project-search-clear hidden"
+              style="position: absolute; right: 0.875rem; top: 50%; transform: translateY(-50%);"
+              title="Clear search"
+              aria-label="Clear search"
+            >
+              ✕
+            </button>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="flex items-center gap-3 self-end md:self-auto shrink-0">
+            <label for="project-sort" class="text-xs font-semibold text-muted uppercase tracking-wider">Sort:</label>
+            <select 
+              id="project-sort" 
+              class="bg-background/60 border border-card-border/80 rounded-2xl px-4 py-2.5 text-xs font-semibold text-foreground focus:outline-none focus:border-primary transition-all cursor-pointer"
+              aria-label="Sort projects"
+            >
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="az">Alphabetical (A–Z)</option>
+              <option value="za">Alphabetical (Z–A)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Pills Row -->
+        <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-card-border/30">
+          <span class="text-xs font-bold text-muted uppercase tracking-widest mr-2 shrink-0">Filter:</span>
+          <button data-filter="all" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-primary text-white shadow-lg shadow-primary/30">All</button>
+          <button data-filter="Python" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">Python</button>
+          <button data-filter="Machine Learning" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">Machine Learning</button>
+          <button data-filter="Data Analytics" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">Data Analytics</button>
+          <button data-filter="Deep Learning" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">Deep Learning &amp; NLP</button>
+          <button data-filter="Full Stack" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">Full Stack</button>
+          <button data-filter="college" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">🎓 College Projects</button>
+          <button data-filter="personal" class="project-filter-pill cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 backdrop-blur-md bg-card/50 border border-card-border/60 text-muted hover:text-foreground hover:bg-card">🚀 Personal Projects</button>
+        </div>
+
+      </div>
+
+      <!-- Responsive Projects Grid Container (3 cols desktop, 2 tablet, 1 mobile) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        <!-- Initial Skeleton Loaders (replaced instantly by projects.js) -->
+        <div class="project-card bg-card/40 border border-card-border/60 rounded-3xl p-6 flex flex-col h-[400px] animate-pulse">
+          <div class="w-full aspect-video bg-white/5 rounded-2xl mb-4"></div>
+          <div class="w-1/3 h-4 bg-white/10 rounded-full mb-3"></div>
+          <div class="w-3/4 h-6 bg-white/10 rounded-full mb-4"></div>
+          <div class="w-full h-12 bg-white/5 rounded-xl mb-4"></div>
+          <div class="mt-auto flex gap-2">
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+          </div>
+        </div>
+        <div class="project-card bg-card/40 border border-card-border/60 rounded-3xl p-6 flex flex-col h-[400px] animate-pulse">
+          <div class="w-full aspect-video bg-white/5 rounded-2xl mb-4"></div>
+          <div class="w-1/3 h-4 bg-white/10 rounded-full mb-3"></div>
+          <div class="w-3/4 h-6 bg-white/10 rounded-full mb-4"></div>
+          <div class="w-full h-12 bg-white/5 rounded-xl mb-4"></div>
+          <div class="mt-auto flex gap-2">
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+          </div>
+        </div>
+        <div class="project-card bg-card/40 border border-card-border/60 rounded-3xl p-6 flex flex-col h-[400px] animate-pulse">
+          <div class="w-full aspect-video bg-white/5 rounded-2xl mb-4"></div>
+          <div class="w-1/3 h-4 bg-white/10 rounded-full mb-3"></div>
+          <div class="w-3/4 h-6 bg-white/10 rounded-full mb-4"></div>
+          <div class="w-full h-12 bg-white/5 rounded-xl mb-4"></div>
+          <div class="mt-auto flex gap-2">
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+            <div class="w-16 h-6 bg-white/5 rounded-md"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State Container -->
+      <div id="empty-state" class="hidden text-center py-20 px-6 bg-card/30 border border-card-border/60 rounded-3xl mt-6">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-2xl">
+          🔍
+        </div>
+        <h3 class="text-xl font-bold text-foreground mb-2">No projects match your search</h3>
+        <p class="text-muted text-sm max-w-md mx-auto mb-6">
+          We couldn't find any projects matching your current search query or active category filters. Try adjusting your search term.
+        </p>
+        <button id="btn-reset-filters" class="btn-primary cursor-pointer">
+          Reset All Filters &amp; Search
+        </button>
+      </div>
+
+    </section>
+
+    <!-- VIEW 2: PROJECT DETAIL & LIVE README VIEWER (Populated via projects.js on #/slug) -->
+    <section id="project-detail-view" class="hidden"></section>
+
+  </main>
+
+  <!-- REUSED SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-glow-line"></div>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
+
+      <!-- Main Footer Columns (Balanced 3-column layout) -->
+      <div class="footer-main-grid pb-9 border-b border-card-border/50">
+        
+        <!-- Column 1: Brand & Bio & Status -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <h3 class="font-black text-foreground text-2xl tracking-tight">Aryan Gupta 🇮🇳</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Available
+            </span>
+          </div>
+
+          <p class="text-muted text-sm leading-relaxed max-w-md">
+            Full Stack Data Scientist &amp; ML Engineer crafting high-performance intelligent systems at the intersection of production software and AI models.
+          </p>
+
+          <!-- Social Buttons -->
+          <div class="flex items-center gap-3 mt-2">
+            <a href="https://github.com/yoloaryan" target="_blank" rel="noopener noreferrer" title="GitHub" class="footer-social-btn" aria-label="GitHub Profile">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/aryan-gupta-a40277226" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="footer-social-btn" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:guptaaryan1672@gmail.com" title="Email" class="footer-social-btn" aria-label="Email Aryan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="./assets/documents/resume.pdf" target="_blank" rel="noopener noreferrer" title="View Resume" class="footer-social-btn" aria-label="View Resume PDF">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Navigation -->
+        <div class="footer-nav-col">
+          <p class="text-xs font-bold uppercase tracking-widest text-muted mb-4">Navigation</p>
+          <ul class="space-y-2.5">
+            <li><a href="index.html#home" class="footer-nav-link">Home</a></li>
+            <li><a href="index.html#about" class="footer-nav-link">About</a></li>
+            <li><a href="index.html#skills" class="footer-nav-link">Skills</a></li>
+            <li><a href="index.html#experience" class="footer-nav-link">Experience</a></li>
+            <li><a href="projects.html" class="footer-nav-link text-primary font-semibold">Projects</a></li>
+            <li><a href="index.html#contact" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Newsletter Subscription -->
+        <div class="footer-newsletter-col">
+          <div class="portfolio-card p-5 bg-card/60 backdrop-blur-xl border border-card-border/60 rounded-2xl flex flex-col gap-3">
+            <div>
+              <h4 class="font-bold text-foreground text-sm mb-1">Stay Updated</h4>
+              <p class="text-xs text-muted">Get occasional updates on AI projects and engineering essays.</p>
+            </div>
+            
+            <form id="newsletter-form" class="flex flex-col gap-2.5">
+              <div class="flex gap-2">
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  placeholder="you@domain.com"
+                  required
+                  class="flex-1 bg-background/50 border border-card-border/60 rounded-xl px-3.5 py-2 text-foreground text-xs focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-muted/40 transition-all"
+                />
+                <button
+                  id="btn-newsletter-join"
+                  type="submit"
+                  class="bg-primary hover:bg-primary-hover text-white text-xs font-bold px-4 py-2 rounded-xl transition-all shadow-md hover:shadow-primary/30 flex items-center justify-center min-w-[65px] cursor-pointer"
+                >
+                  Join
+                </button>
+              </div>
+              <p id="newsletter-msg" class="hidden text-xs font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-2 text-center"></p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Joke Widget Section -->
+      <div class="footer-joke-container pt-6 pb-2">
+        <!-- Stage 1: Idle button -->
+        <button id="btn-joke-start" class="joke-start-btn" aria-label="Tell data science joke">
+          <span>✨</span>
+          <span>Wanna hear a data science joke?</span>
+        </button>
+
+        <!-- Stage 2: Asking question -->
+        <div id="joke-stage-asking" class="hidden flex-col items-center text-center max-w-sm">
+          <div class="joke-dialog-box mb-3">
+            <p id="joke-question-text" class="text-foreground font-medium text-sm leading-relaxed"></p>
+          </div>
+          <button id="btn-joke-reveal" class="btn-primary px-5 py-2 text-xs font-bold rounded-full shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:scale-95 transition-all">
+            Tell me! 👇
+          </button>
+        </div>
+
+        <!-- Stage 3: Reveal punchline -->
+        <div id="joke-stage-reveal" class="hidden flex-col items-center text-center max-w-md w-full relative">
+          <div class="joke-dialog-box relative overflow-hidden w-full mb-3">
+            <div class="text-3xl mb-1">😂</div>
+            <p id="joke-q-preview" class="text-muted text-xs mb-2 italic"></p>
+            <p id="joke-punchline-text" class="text-foreground font-black text-lg mb-1 leading-snug"></p>
+          </div>
+          <button id="btn-joke-roll" class="text-xs font-bold text-muted hover:text-primary transition-colors uppercase tracking-wider flex items-center gap-1.5 cursor-pointer bg-transparent border-none">
+            <span>♻️</span>
+            <span>Roll Another</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-5 border-t border-card-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+        <p>© 2026 Aryan Gupta. All rights reserved.</p>
+        <p class="flex items-center gap-1.5">
+          <span>Designed &amp; engineered with</span>
+          <span class="text-red-500 inline-block animate-pulse">❤️</span>
+          <span class="font-mono text-muted/80">using Vanilla HTML, CSS &amp; JS</span>
+        </p>
+        <a href="#top" class="text-muted hover:text-primary transition-colors flex items-center gap-1">
+          <span>Back to top</span>
+          <span>↑</span>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- MODALS: AI HUD & Article Modal -->
+  <div id="hud-modal" class="hud-modal" role="dialog" aria-modal="true" aria-labelledby="hud-title">
+    <div class="hud-window">
+      <div class="hud-header">
+        <div class="hud-dots">
+          <span class="hud-dot hud-dot-close" id="hud-close-dot"></span>
+          <span class="hud-dot hud-dot-min"></span>
+          <span class="hud-dot hud-dot-max"></span>
+        </div>
+        <div class="hud-title" id="hud-title">AI NEURAL CORE // CONTROL HUD</div>
+        <button id="btn-close-hud" class="hud-close-btn" aria-label="Close HUD">✕</button>
+      </div>
+
+      <div class="hud-body">
+        <div class="hud-terminal" id="hud-terminal-output">
+          <div class="text-emerald-400 font-mono text-xs">AG-SYSTEM-OS v4.2 [ONLINE]</div>
+          <div class="text-muted text-xs font-mono">Neural network core loaded. Ready for telemetry commands.</div>
+        </div>
+
+        <div class="hud-stats-grid">
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">SYSTEM HEALTH</div>
+            <div class="hud-stat-val text-emerald-400">ONLINE 99.8%</div>
+          </div>
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">LATENCY</div>
+            <div class="hud-stat-val text-primary">12ms</div>
+          </div>
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">AGENT REASONING</div>
+            <div class="hud-stat-val text-purple-400">ACTIVE</div>
+          </div>
+          <div class="hud-stat-box">
+            <div class="hud-stat-label">RAG VECTOR DB</div>
+            <div class="hud-stat-val text-cyan-400">CONNECTED</div>
+          </div>
+        </div>
+
+        <div class="hud-label mt-4">SHORTCUT KEYBOARD COMMANDS</div>
+        <div class="hud-cmd-list">
+          <div><kbd>[CMD+K]</kbd> Toggle Control HUD</div>
+          <div><kbd>[ESC]</kbd> Terminate View</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External CDNs for Markdown rendering, Sanitization, and Syntax Highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- Application Logic -->
+  <script src="./script.js"></script>
+  <script src="./readme.js"></script>
+  <script src="./projects.js?v=17923149"></script>
+</body>
+</html>

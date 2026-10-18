@@ -1,0 +1,8 @@
+# macOS metadata & AppleDouble files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs & temp files
+*.log
